@@ -11,7 +11,7 @@
         <td class="tt ct">帳號</td>
         <td class="pp">
             <input type="text" name="acc" id="acc">
-            <button>檢測帳號</button>
+            <button onclick="chkAcc()">檢測帳號</button>
         </td>
     </tr>
     <tr>
@@ -23,7 +23,7 @@
     <tr>
         <td class="tt ct">電話</td>
         <td class="pp">
-            <input type="number" name="mobile" id="mobile">
+            <input type="number" name="tel" id="tel">
         </td>
     </tr>
     <tr>
@@ -40,6 +40,49 @@
     </tr>
 </table>
 <div class="ct">
-    <button>註冊</button>
-    <button>重置</button>
+    <button onclick="reg()">註冊</button>
+    <button onclick="clean()">重置</button>
 </div>
+
+<script>
+    function chkAcc(){
+        let acc=$("#acc").val();
+        $.get("./api/chk_acc.php",{acc},(res)=>{
+            if(parseInt(res)>0 || acc == "admin" ){
+                alert("帳號已存在");
+            }else{
+                    alert("帳號可使用")
+                
+            }
+        })
+    }
+    function reg(){
+        let user={
+            name:$("#name").val(),
+            acc:$("#acc").val(),
+            pw:$("#pw").val(),
+            tel:$("#tel").val(),
+            addr:$("#addr").val(),
+            email:$("#email").val(),
+        };
+        $.get("./api/chk_acc.php",{acc:user.acc},(res)=>{
+            if(parseInt(res)>0 || acc == "admin" ){
+                alert("帳號已存在");
+            }else{
+                $.post("./api/reg.php",user,()=>{
+                    alert("註冊成功");
+                    location.href="?do=login";
+                })
+            }
+        })
+    }
+
+    function clean(){
+        $("#name").val('');
+        $("#acc").val('');
+        $("#pw").val('');
+        $("#tel").val('');
+        $("#addr").val('');
+        $("#email").val('');
+    }
+</script>
