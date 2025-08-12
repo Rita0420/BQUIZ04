@@ -14,7 +14,6 @@
 </head>
 
 <body>
-    <iframe name="back" style="display:none;"></iframe>
     <div id="main">
         <div id="top">
             <a href="?">
@@ -25,8 +24,21 @@
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
+                <?php
+                if(isset($_SESSION['login'])):
+                ?>
+                <a href="./api/logout.php">會員登出</a> |
+                <?php else:?>
                 <a href="?do=login">會員登入</a> |
-                <a href="?do=admin">管理登入</a>
+                <?php endif;?>
+                <?php
+                if(isset($_SESSION['admin'])):
+                ?>
+                <a href="backend.php">返回管理</a> |
+                <?php else:?>
+                <a href="?do=admin">管理登入</a> |
+                <?php endif;?>
+                
             </div>
             <marquee behavior="" direction="">
                 情人節特惠活動 &nbsp;&nbsp;&nbsp;年終特賣會開跑了&nbsp;&nbsp;&nbsp;
