@@ -1,3 +1,8 @@
+<?php
+if(!empty($_POST)){
+    $Types->save($_POST);
+}
+?>
 <h2 class="ct">商品分類</h2>
 <div>
 <div class="ct">
@@ -70,11 +75,12 @@
     </tr>
 </table>
 </div>
+
 <script>
     getBigs();
     function addBig(){
         let big=$("#big").val();
-        $.post("./api/save_type.php",{name:big,big_id:0},(res)=>{
+        $.post("?do=th",{name:big,big_id:0},(res)=>{
             $("#big").val("");
             getBigs();
         })
@@ -82,7 +88,7 @@
     function addMid(){
         let mid=$("#mid").val();
         let big_id=$("#selBig").val();
-        $.post("./api/save_type.php",{name:mid,big_id},(res)=>{
+        $.post("?do=th",{name:mid,big_id},(res)=>{
             location.reload();
         })
     }
@@ -108,7 +114,7 @@
         let newName=prompt("請輸入新的分類名稱",name);
 
         if(newName != null){
-            $.post("./api/save_type.php",{id,name:newName},()=>{
+            $.post("?do=th",{id,name:newName},()=>{
                 location.reload();
             })
         }
