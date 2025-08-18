@@ -46,7 +46,7 @@ $super_pr=unserialize($super['pr']);
             
                 </div>
         </div>
-        <div id="right">
+        <div id="right" >
 			 <?php
                 $do=$_GET['do']??'admin';
                 $file="./backend/$do.php";

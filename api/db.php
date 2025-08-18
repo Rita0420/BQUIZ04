@@ -149,3 +149,4 @@ class DB{
 
 $User=new DB("user");
 $Admin=new DB("admin");
+$Types=new DB("types");
