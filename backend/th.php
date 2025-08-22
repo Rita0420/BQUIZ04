@@ -61,18 +61,27 @@ if(!empty($_POST)){
         <td>狀態</td>
         <td>操作</td>
     </tr>
+    <?php
+    $items=$Item->all();
+    foreach($items as $item):
+    ?>
     <tr class="pp ct">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?=$item['no'];?></td>
+        <td><?=$item['name'];?></td>
+        <td><?=$item['stock'];?></td>
         <td>
-            <button>修改</button>
-            <button>刪除</button>
-            <button>上架</button>
-            <button>下架</button>
+            <?php
+            echo ($item['sh']==1)?"販售中":"已下架";
+            ?>
+        </td>
+        <td>
+            <button data-id="<?=$item['id'];?>" class="edit-btn">修改</button>
+            <button data-id="<?=$item['id'];?>" class="del-btn">刪除</button>
+            <button data-id="<?=$item['id'];?>" class="up-btn">上架</button>
+            <button data-id="<?=$item['id'];?>" class="down-btn">下架</button>
         </td>
     </tr>
+    <?php endforeach;?>
 </table>
 </div>
 
@@ -119,4 +128,6 @@ if(!empty($_POST)){
             })
         }
     })
+
+    
 </script>
