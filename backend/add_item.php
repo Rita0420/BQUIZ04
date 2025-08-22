@@ -53,3 +53,23 @@
     <input type="button" value="返回" onclick="location.href='?do=th'">
 </div>
 </form>
+
+<script>
+    getBigs();
+    function getBigs(){
+        $.get("./api/get_bigs.php",(bigs)=>{
+            $("#big").html(bigs);
+            getMids();
+        })
+    }
+    function getMids(){
+        $.get("./api/get_mids.php",{big_id:$("#big").val()},(mids)=>{
+            $("#mid").html(mids);
+        })
+    }
+
+    $("#big").change(function (e) { 
+        e.preventDefault();
+        getMids();
+    });
+</script>

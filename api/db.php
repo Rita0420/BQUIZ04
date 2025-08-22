@@ -151,3 +151,4 @@ $User=new DB("user");
 $Admin=new DB("admin");
 $Types=new DB("types");
 $Bot=new DB("bot");
+$Item=new DB("item");
