@@ -75,7 +75,7 @@ if(!empty($_POST)){
             ?>
         </td>
         <td>
-            <button data-id="<?=$item['id'];?>" class="edit-btn">修改</button>
+            <button onclick="location.href='?do=edit_item&id=<?=$item['id'];?>'">修改</button>
             <button data-id="<?=$item['id'];?>" class="del-btn">刪除</button>
             <button data-id="<?=$item['id'];?>" class="up-btn">上架</button>
             <button data-id="<?=$item['id'];?>" class="down-btn">下架</button>
@@ -117,17 +117,26 @@ if(!empty($_POST)){
         }
     })
 
-    $(".edit-btn").on("click",function(){
+    $(".up-btn , .down-btn").on("click",function(){
         let id=$(this).data("id");
-        let name=$(this).parent().prev().text();
-        let newName=prompt("請輸入新的分類名稱",name);
-
-        if(newName != null){
-            $.post("?do=th",{id,name:newName},()=>{
-                location.reload();
-            })
+        let action=$(this).text();
+        let sh=1;
+        switch (action) {
+            case '上架':
+                sh=1;
+                break;
+            case '下架':
+                sh=0;
+                break;
+        
+            default:
+                break;
         }
-    })
 
+        $.post("./api/sw.php",{id,sh},()=>{
+            // location.reload();
+            $(this).parent().prev().text(sh==1?"販售中":"已下架");
+        })
+    })
     
 </script>

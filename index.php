@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>┌精品電子商務網站」</title>
+    <title>「精品電子商務網站」</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/js.js"></script>
     <script src="./js/jquery-3.4.1.min.js"></script>
