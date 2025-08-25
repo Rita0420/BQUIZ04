@@ -46,6 +46,25 @@
         </div>
         <div id="left" class="ct">
             <div style="min-height:400px;">
+                <a href="?type=0" class="big">全部商品(<?=$Item->count(['sh'=>1]);?>)</a>
+                <?php
+                $bigs=$Types->all(['big_id'=>0]);
+                foreach($bigs as $big):
+                ?>
+                <div class="ww">
+                <a href="?type=<?=$big['id'];?>" class="big"><?=$big['name'];?>(<?=$Item->count(['big'=>$big['id'],'sh'=>1]);?>)</a>
+                <?php
+                if($Types->count(['big_id'=>$big['id']>0])):
+                $mids=$Types->all(['big_id'=>$big['id']]);
+                foreach($mids as $mid):
+                    ?>
+                <div class="s">
+                <a href="?type=<?=$mid['id'];?>" style="background-color: #eee;" class="mid"><?=$mid['name'];?>(<?=$Item->count(['mid'=>$mid['id'],'sh'=>1]);?>)</a>
+                </div>
+                <?php endforeach;
+                      endif;?>
+                </div>
+                <?php endforeach;?>
             </div>
             <span>
                 <div>進站總人數</div>
@@ -66,8 +85,13 @@
                 ?>
         </div>
         <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-            頁尾版權 : </div>
+            頁尾版權 : <?=$Bot->find(1)['bottom'];?></div>
     </div>
+
+    <script>
+        
+        
+    </script>
 
 </body>
 

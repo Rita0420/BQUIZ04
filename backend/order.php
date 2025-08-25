@@ -20,3 +20,14 @@
         </td>
     </tr>
 </table>
+
+<script>
+    $(".del-btn").on("click",function(){
+        let id=$(this).data("id");
+        if(confirm(`確定要刪除這筆訂單資料嗎?`)){
+            $.post("./api/del.php",{id,table:'Types'},()=>{
+                location.reload();
+            })
+        }
+    })
+</script>

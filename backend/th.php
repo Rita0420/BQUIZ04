@@ -138,5 +138,18 @@ if(!empty($_POST)){
             $(this).parent().prev().text(sh==1?"販售中":"已下架");
         })
     })
+
+    $(".edit-btn").on("click",function(){
+    let id=$(this).data("id");
+    let name=$(this).parent().prev().text();
+    let newName=prompt("請輸入新的分類名稱",name);
+    if(newName != null){
+        $.post("./api/save_type.php",{id,name:newName},()=>{
+            $(this).parent().prev().text(newName);
+            //location.reload();
+        })
+    }
+
+})
     
 </script>
