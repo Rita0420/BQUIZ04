@@ -10,7 +10,7 @@ body
 	padding:10px;
 	margin:20px auto 20px auto;
 	border:#000 solid 1px;
-	min-height:768px;
+	height:768px;
 }
 #top a
 {
@@ -22,7 +22,7 @@ body
 	display:inline-block;
 	width:20%;
 	padding:2%;
-	min-height:550px;
+	height:550px;
 	vertical-align:top;
 	border:#000 1px solid;
 }
@@ -104,9 +104,10 @@ input[type=text],input[type=password]
 {
 	display:none;
 }
+
 div.ww:hover > div.s
 {
-	display:block;
+	display: block;
 }
 .sb button
 {
